@@ -20,10 +20,10 @@ jobs:
     - name: Install pipeline
       run: pip install .
     - name: Build HTML
-      run: cd transcription_pipeline/docs && make clean && make html
+      run: cd ms2_pipeline_lite/docs && make clean && make html
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
       if: github.ref == 'refs/heads/main'
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: transcription_pipeline/docs/build/html
+        publish_dir: ms2_pipeline_lite/docs/build/html

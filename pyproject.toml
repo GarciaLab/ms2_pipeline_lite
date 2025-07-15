@@ -1,34 +1,72 @@
 [build-system]
-requires = ["setuptools"]
+requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "transcription_pipeline"
+name = "ms2_pipeline_lite"
 version = "0.0.1"
+description = "Transcription spot analysis pipeline"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [
+    {name = "yovanBadal", email = "ybadal@berkeley.edu"},
+]
+maintainers = [
+    {name = "yovanBadal", email = "ybadal@berkeley.edu"},
+]
+keywords = ["transcription", "spot", "analysis", "pipeline", "tracking"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+    "Topic :: Scientific/Engineering :: Image Processing",
+]
+requires-python = ">=3.8"
 dependencies = [
     "matplotlib",
-    "napari[all]",
+    "napari",
+    "napari-ome-zarr",
+    "numpy",
+    "dask",
+    "dask-image",
+    "bioio",
+    "bioio-czi",
+    "bioio-dv",
+    "bioio-imageio",
+    "bioio-lif",
+    "bioio-nd2",
+    "bioio-ome-tiff",
+    "bioio-ome-zarr",
+    "bioio-sldy",
+    "bioio-tifffile",
+    "bioio-tiff-glob",
+    "bioio-bioformats",
+    "scyjava",
     "trackpy",
-    "numba",
-    "jpype1",
-    "dask[complete]==2023.5.1",
-    "deprecation==2.1.0",
-    "numpy==1.24.4",
-    "pandas==2.0.2",
-    "PIMS==0.6.1",
-    "scipy==1.11.1",
-    "scikit-image==0.21.0",
-    "trackpy==0.6.1",
-    "zarr==2.14.2",
-    "numba-progress==1.1.0",
-    "install-jdk",
+    "pandas",
+    "tqdm",
+    "magicgui",
 ]
 
-[tool.setuptools.package-data]
-transcription_pipeline = ["loci_tools.jar"]
 
-[tool.setuptools.packages]
-find = {}  # Scan the project directory with the default parameters
+[project.urls]
+Homepage = "https://github.com/yourusername/ms2_pipeline_lite"
+Documentation = "https://garcialab.berkeley.edu/transcription_pipeline/"
+Repository = "https://github.com/yourusername/ms2_pipeline_lite"
+"Bug Tracker" = "https://github.com/yourusername/ms2_pipeline_lite/issues"
 
-[project.scripts]
-install_bioformats_jar = "transcription_pipeline.prerequisites.install_bioformats:install_bioformats"
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["ms2_pipeline_lite*"]
+exclude = ["test_data*", ".github*", "*.ipynb_checkpoints*", "docs*"]
+
+[tool.setuptools.exclude-package-data]
+"*" = ["test_data/*", ".github/*", "*.ipynb", "*.ipynb_checkpoints/*"]

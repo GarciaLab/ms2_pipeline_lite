@@ -1,0 +1,68 @@
+package:
+  name: ms2_pipeline_lite
+  version: "0.0.1"
+
+source:
+  path: .
+
+build:
+  script: python -m pip install . --no-deps -vv
+  noarch: python
+  number: 0
+
+requirements:
+  host:
+    - python >=3.8
+    - pip
+    - setuptools
+  run:
+    - python >=3.8
+    - matplotlib
+    - napari
+    - napari-ome-zarr
+    - numpy
+    - dask
+    - dask-image
+    - bioio
+    - bioio-czi
+    - bioio-dv
+    - bioio-imageio
+    - bioio-lif
+    - bioio-nd2
+    - bioio-ome-tiff
+    - bioio-ome-zarr
+    - bioio-sldy
+    - bioio-tifffile
+    - bioio-tiff-glob
+    - bioio-bioformats
+    - bioio-ome-zarr
+    - scyjava
+    - trackpy
+    - pandas
+    - tqdm
+    - magicgui
+
+test:
+  imports:
+    - ms2_pipeline_lite
+    - ms2_pipeline_lite.preprocessing
+    - ms2_pipeline_lite.nuclear_analysis
+    - ms2_pipeline_lite.spot_analysis
+    - ms2_pipeline_lite.step_detection
+    - ms2_pipeline_lite.tracking
+    - ms2_pipeline_lite.utils
+
+about:
+  home: https://github.com/yourusername/ms2_pipeline_lite
+  license: MIT
+  license_file: LICENSE
+  summary: "Transcription spot analysis pipeline"
+  description: |
+    Python pipeline for transcription spot tracking and analysis.
+    Full documentation can be found at https://garcialab.berkeley.edu/transcription_pipeline/
+  dev_url: https://github.com/yourusername/ms2_pipeline_lite
+  doc_url: https://garcialab.berkeley.edu/transcription_pipeline/
+
+extra:
+  recipe-maintainers:
+    - yovanBadal
